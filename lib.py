@@ -127,9 +127,9 @@ def rsa_gen_keys():
     q = gen_pseudoprime()
     phi = (p-1)*(q-1)
     n = p*q
-    e = secrets.randbits(64)
+    e = secrets.randbits(32 + secrets.randbelow(64))
     while gcd(e, phi) != 1:
-        e = secrets.randbits(64)
+        e = secrets.randbits(32 + secrets.randbelow(64))
 
     d = mulinv(e, phi)
 
